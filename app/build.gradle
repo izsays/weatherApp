@@ -1,0 +1,90 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.2"
+    defaultConfig {
+        applicationId "com.vodworks.myweatherapp"
+        minSdkVersion 16
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+        vectorDrawables {
+            useSupportLibrary = true
+        }
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    def room_version = "1.1.1"
+    def retrofit_version = "2.5.0"
+    def ssp_sdp_version = "1.0.6"
+    def glide_version = "4.10.0"
+    def android_support_version = "1.1.0"
+    def butterknife_version = "10.0.0"
+    def lifecycle_version = "2.1.0"
+
+//    Android support libraries....
+    implementation "androidx.appcompat:appcompat:$android_support_version"
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'com.google.android.material:material:1.2.0-alpha02'
+    implementation "androidx.recyclerview:recyclerview:$android_support_version"
+
+//    Butter knife....
+    implementation "com.jakewharton:butterknife:$butterknife_version"
+    implementation 'androidx.appcompat:appcompat:1.0.2'
+    annotationProcessor "com.jakewharton:butterknife-compiler:$butterknife_version"
+
+//    Glide library....
+    implementation "com.github.bumptech.glide:glide:$glide_version"
+    annotationProcessor "com.github.bumptech.glide:compiler:$glide_version"
+
+//    Ssp and sdp library....
+    implementation "com.intuit.sdp:sdp-android:$ssp_sdp_version"
+    implementation "com.intuit.ssp:ssp-android:$ssp_sdp_version"
+
+//    Retrofit library....
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.2.1'
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+
+//    Room library....
+    implementation "android.arch.persistence.room:runtime:$room_version"
+    annotationProcessor "android.arch.persistence.room:compiler:$room_version"
+    testImplementation "android.arch.persistence.room:testing:$room_version"
+
+//    Location services libraries....
+    implementation 'com.google.android.gms:play-services-location:17.0.0'
+
+//    Event bus....
+    implementation 'org.greenrobot:eventbus:3.1.1'
+
+//    Work manager....
+    implementation 'android.arch.work:work-runtime:1.0.1'
+
+//    External libraries....
+    implementation 'com.airbnb.android:lottie:3.2.2'
+    implementation 'com.romandanylyk:pageindicatorview:1.0.3'
+
+    // Lifecycle components
+    implementation "android.arch.lifecycle:extensions:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-common-java8:$lifecycle_version"
+
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
+}
